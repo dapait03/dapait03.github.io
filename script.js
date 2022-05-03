@@ -78,13 +78,8 @@ function gameLoop(){
     count = 0;
     canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    if (fingersPresent < 2) {
     snake.x += snake.dx;
     snake.y += snake.dy;
-    } else {
-        snake.x += 0;
-        snake.y += 0;
-    }
 
     // Snake Movement
     // unshift adds snake coordinates to the beginning
