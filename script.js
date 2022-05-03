@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
+    alert("Ziel des Spiels: \n Versuche so viele Powerups (grün) wie möglich einzusammeln. \n Steuerung: \n Swipe in eine Richtung, um die Schlange (pink) zu bewegen. \n Drücke auf den Bildschirm, um das Powerup neu erscheinen zu lassen. \n Benutze 2 Finger, um das Spiel neuzustarten.");
     init();
     requestAnimationFrame(gameLoop);
 }, false)
