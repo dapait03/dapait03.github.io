@@ -220,7 +220,7 @@ function directionHandler(event) {
     var xy = Math.abs(x/y);
     var yx = Math.abs(y/x);
 
-    if (Math.abs(x) > threshold || Math.abs(y) > threshold || snake.dx === 0 || snake.dy === 0){
+    if (Math.abs(x) > threshold || Math.abs(y) > threshold || snake.dx === 0){
 
         if (yx <= limit){
             if(x < 0){
