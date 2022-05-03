@@ -196,29 +196,39 @@ function reset(){
 canvas.addEventListener("touchstart", function(event){
     
     event.preventDefault();
-    touchStartX = event.changedTouches[0].screenX;
-    touchStartY = event.changedTouches[0].screenY;
-    setFingers(event.changedTouches);
+
+    if(event.touches.length == 1){
+
+        touchStartX = event.changedTouches[0].screenX;
+        touchStartY = event.changedTouches[0].screenY;
+
+    }
     
 }, false);
 
 canvas.addEventListener("touchmove", function(event){
+
     var tempSnake = {
         dx: snake.dx,
         dy: snake.dy,
     }
+
     var tempPowerup = {
         x: powerup.x,
         y: powerup.y
     }
 
     if(event.touches.length >= 2){
+
         snake.dx = snake.dy = 0;
+
     } else {
+
         snake.dx = tempSnake.dx;
         snake.dy = tempSnake.dy;
         powerup.x = tempPowerup.x;
         powerup.y = tempPowerup.y;
+
     }
 
 }, false)
@@ -226,11 +236,14 @@ canvas.addEventListener("touchmove", function(event){
 canvas.addEventListener("touchend", function(event){
 
     event.preventDefault();
+
+    if(event.touches.length == 1){
+
     touchEndX = event.changedTouches[0].screenX;
     touchEndY = event.changedTouches[0].screenY;
-    removeFingers(event.changedTouches);
     directionHandler(event);
 
+    }
 
 }, false);
 
@@ -276,22 +289,4 @@ function directionHandler(event) {
         powerup.x = getRandomInt(0, (canvas.width/25)) * grid;
         powerup.y = getRandomInt(0, (canvas.height/25)) * grid;
     }
-}
-
-var fingersPresent = 0;
-
-function setFingers(touches) {
-    
-    for (let t of touches) {
-        fingersPresent++;
-    }
-
-}
-
-function removeFingers(touches) {
-
-    for (let t of touches) {
-        fingersPresent--;
-    }
-
 }
