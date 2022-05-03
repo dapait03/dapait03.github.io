@@ -1,28 +1,29 @@
 <html>
     <head>
         <title>Snake Touch Game</title>
-        <style src="stylesheet.css"></style>
+        <!-- <style src="stylesheet.css"></style> -->
     </head>
     <body>
         <div class="dashboard">
 
             <div class="header" style="text-align: center">
                 
-                <h4 style="display: inline-block">Score: 0</h4>
-                <h4 style="display: inline-block">Highscore: 0</h4>
-                <h4 style="display: inline-block">PowerUps: 0</h4>
-                <h4 style="display: inline-block">Versuch: 0</h4>
+                <h2 id="score" style="display: inline-block">Score: 0</h4>
+                <h2 id="highscore" style="display: inline-block">Highscore: 0</h4>
+                <h2 id="powerups" style="display: inline-block">PowerUps: 0</h4>
+                <h2 id="attempt" style="display: inline-block">Versuch: 0</h4>
                 
             </div>
 
         </div>
-
         
-        <canvas id="canvas01" width="1000" height="800">
+        <canvas id="canvas01" width="1000" height="800" style="border: solid 5px darkblue">
             This Browser does not support canvas elements. Try switching to another browser.
         </canvas>
-        <script src="script.js"></script>
+        
         <audio id="backgroundAudio" autoplay loop muted src="./music/8_bit_surf.mp3"></audio>
+
+        <script src="script.js"></script>
         
     </body>
 </html>
