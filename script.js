@@ -197,38 +197,28 @@ canvas.addEventListener("touchstart", function(event){
     
     event.preventDefault();
 
-    if(event.touches.length == 1){
-
-        touchStartX = event.changedTouches[0].screenX;
-        touchStartY = event.changedTouches[0].screenY;
-
-    }
+    touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
     
 }, false);
 
 canvas.addEventListener("touchmove", function(event){
-
     var tempSnake = {
         dx: snake.dx,
         dy: snake.dy,
     }
-
     var tempPowerup = {
         x: powerup.x,
         y: powerup.y
     }
 
     if(event.touches.length >= 2){
-
         snake.dx = snake.dy = 0;
-
     } else {
-
         snake.dx = tempSnake.dx;
         snake.dy = tempSnake.dy;
         powerup.x = tempPowerup.x;
         powerup.y = tempPowerup.y;
-
     }
 
 }, false)
@@ -237,13 +227,10 @@ canvas.addEventListener("touchend", function(event){
 
     event.preventDefault();
 
-    if(event.touches.length == 1){
-
     touchEndX = event.changedTouches[0].screenX;
     touchEndY = event.changedTouches[0].screenY;
-    directionHandler(event);
 
-    }
+    directionHandler(event);
 
 }, false);
 
