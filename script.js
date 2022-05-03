@@ -57,7 +57,7 @@ var powerup = {
 var pageWidth = window.innerWidth || document.body.clientWidth;
 var threshold = Math.max(1, Math.floor(.01 * (pageWidth)));
 var touchStartX = 0, touchStartY = 0, touchEndX = 0, touchEndY = 0;
-const limit = Math.tan(45 * 1.5 / 180 * Math.PI);
+const LIMIT = Math.tan(45 * 1.5 / 180 * Math.PI);
 
 /*
 -------------------------------------------------
@@ -202,6 +202,27 @@ canvas.addEventListener("touchstart", function(event){
     
 }, false);
 
+canvas.addEventListener("touchmove", function(event){
+    var tempSnake = {
+        dx: snake.dx,
+        dy: snake.dy,
+    }
+    var tempPowerup = {
+        x: powerup.x,
+        y: powerup.y
+    }
+
+    if(event.touches.length >= 2){
+        snake.dx = snake.dy = 0;
+    } else {
+        snake.dx = tempSnake.dx;
+        snake.dy = tempSnake.dy;
+        powerup.x = tempPowerup.x;
+        powerup.y = tempPowerup.y;
+    }
+
+}, false)
+
 canvas.addEventListener("touchend", function(event){
 
     event.preventDefault();
@@ -222,7 +243,7 @@ function directionHandler(event) {
 
     if (Math.abs(x) > threshold || Math.abs(y) > threshold || snake.dx === 0){
 
-        if (yx <= limit){
+        if (yx <= LIMIT){
             if(x < 0){
                 if (snake.dx === 0){
                     snake.dx = -grid;
@@ -235,7 +256,7 @@ function directionHandler(event) {
                 }
             }
         }
-        if (xy <= limit){
+        if (xy <= LIMIT){
             if (y < 0) {
                 // direction: up
                 if(snake.dy === 0){
@@ -252,20 +273,9 @@ function directionHandler(event) {
         }
     } else {
         // tap
-        console.log("tap");
         powerup.x = getRandomInt(0, (canvas.width/25)) * grid;
         powerup.y = getRandomInt(0, (canvas.height/25)) * grid;
     }
-}
-
-function multiTouch(event){
-
-    var temp = {
-        dx: snake.dx,
-        dy: snake.dy,
-    }
-    snake.dx = snake.dy = 0;
-
 }
 
 var fingersPresent = 0;
