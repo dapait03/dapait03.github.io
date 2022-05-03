@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function(){
     requestAnimationFrame(gameLoop);
 }, false)
 
-
 /*
 -------------------------------------------------
     Canvas
@@ -28,9 +27,14 @@ var gameOver = new Audio("./music/gameOver.wav");
 */
 
 // System variables
-var grid = 16, level = 4, attempt = count = highscore = powerups = score = 0;
+var grid = 16, level = 4, attempt = 0, count = 0, highscore = 0, powerups = 0, score = 0;
 
-var header = document.getElementById("h4");
+// var header = document.getElementById("h4");
+var header = [];
+header[0] = document.getElementById("score");
+header[1] = document.getElementById("highscore");
+header[2] = document.getElementById("powerups");
+header[3] = document.getElementById("attempt");
 
 // player
 var snake = {
@@ -93,7 +97,6 @@ function gameLoop(){
     canvasContext.fillStyle = "green";
     // Power Up drawing
     canvasContext.fillRect(powerup.x, powerup.y, grid-1, grid-1);
-
 
     // Snake color
     canvasContext.fillStyle = "#b00b69";
